@@ -671,8 +671,8 @@ class MembersScreenState extends State<MembersScreen> {
   }
 
   Widget _groupTile(Group group, SystemProvider provider, {required bool isGrid}) {
-    final onTap = () => setState(() => _selectedGroup = group);
-    final onLongPress = () => Navigator.of(context).push(
+    void onTap() => setState(() => _selectedGroup = group);
+    void onLongPress() => Navigator.of(context).push(
           MaterialPageRoute(builder: (_) => GroupEditScreen(group: group)),
         );
 
@@ -730,7 +730,7 @@ class MembersScreenState extends State<MembersScreen> {
   }
 
   Widget _ungroupedTile({required bool isGrid, required int count}) {
-    final onTap = () => setState(() => _showingUngrouped = true);
+    void onTap() => setState(() => _showingUngrouped = true);
 
     if (isGrid) {
       return Card(
