@@ -31,7 +31,7 @@ class Member {
   final DateTime editedAt;
 
   /// Values for fully custom fields (see CustomFieldDefinition), keyed by
-  /// field id. String for text fields, List<String> for list/multiSelect.
+  /// field id. String for text fields, `List<String>` for list/multiSelect.
   Map<String, dynamic> customFieldValues;
 
   Member({
