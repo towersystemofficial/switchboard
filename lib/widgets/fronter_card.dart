@@ -119,7 +119,7 @@ class _FronterCardState extends State<FronterCard> {
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: (colors.isNotEmpty ? colors.first : Colors.grey).withOpacity(0.35),
+              color: (colors.isNotEmpty ? colors.first : Colors.grey).withValues(alpha: 0.35),
               blurRadius: 16,
               offset: const Offset(0, 8),
             ),
@@ -134,7 +134,7 @@ class _FronterCardState extends State<FronterCard> {
                   child: Text(
                     hasFronters ? 'CURRENTLY FRONTING (${entries.length})' : 'CURRENTLY FRONTING',
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.9),
+                      color: Colors.white.withValues(alpha: 0.9),
                       fontWeight: FontWeight.w600,
                       letterSpacing: 1.2,
                       fontSize: 12,
@@ -144,7 +144,7 @@ class _FronterCardState extends State<FronterCard> {
                 if (hasFronters)
                   Icon(
                     _expanded ? Icons.expand_less : Icons.expand_more,
-                    color: Colors.white.withOpacity(0.85),
+                    color: Colors.white.withValues(alpha: 0.85),
                   ),
               ],
             ),
@@ -273,7 +273,7 @@ class _FronterCardState extends State<FronterCard> {
                           'Since ${context.watch<SystemProvider>().formatTime(entries[i].start)} '
                               '(${_formatDuration(entries[i].duration)})',
                         ].join(' \u2022 '),
-                        style: TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 13),
+                        style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 13),
                       ),
                     ],
                   ),

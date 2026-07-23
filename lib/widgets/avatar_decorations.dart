@@ -99,7 +99,7 @@ class GlowEffectPainter extends CustomPainter {
     // or redraw over it.
     for (final f in [1.4, 1.25, 1.12]) {
       final glowPaint = Paint()
-        ..color = color.withOpacity(0.12)
+        ..color = color.withValues(alpha: 0.12)
         ..style = PaintingStyle.stroke
         ..strokeWidth = ringOuterRadius * 0.5
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6);
@@ -133,9 +133,9 @@ class GlowEffectPainter extends CustomPainter {
     final glowPaint = Paint()
       ..shader = RadialGradient(
         colors: [
-          Colors.white.withOpacity(0.95),
-          Color.lerp(color, Colors.white, 0.25)!.withOpacity(0.75),
-          color.withOpacity(0.0),
+          Colors.white.withValues(alpha: 0.95),
+          Color.lerp(color, Colors.white, 0.25)!.withValues(alpha: 0.75),
+          color.withValues(alpha: 0.0),
         ],
         stops: const [0.0, 0.4, 1.0],
       ).createShader(Rect.fromCircle(center: center, radius: outerR))
@@ -147,7 +147,7 @@ class GlowEffectPainter extends CustomPainter {
     final light = Color.lerp(color, Colors.white, 0.5)!;
 
     final glowPaint = Paint()
-      ..color = color.withOpacity(0.22)
+      ..color = color.withValues(alpha: 0.22)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
     canvas.drawCircle(center, ringOuterRadius * 1.1, glowPaint);
 
@@ -173,14 +173,14 @@ class GlowEffectPainter extends CustomPainter {
         ..style = PaintingStyle.stroke
         ..strokeWidth = ringOuterRadius * 0.09
         ..strokeCap = StrokeCap.round
-        ..color = (i == 0 ? light : color).withOpacity(0.75 - i * 0.15)
+        ..color = (i == 0 ? light : color).withValues(alpha: 0.75 - i * 0.15)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2.5);
       canvas.drawPath(path, strandPaint);
     }
 
     for (final angle in [0.3, 1.9, 3.4, 4.8]) {
       final pos = center + Offset(math.cos(angle), math.sin(angle)) * ringOuterRadius;
-      final sparklePaint = Paint()..color = Colors.white.withOpacity(0.85);
+      final sparklePaint = Paint()..color = Colors.white.withValues(alpha: 0.85);
       canvas.drawCircle(pos, ringOuterRadius * 0.045, sparklePaint);
     }
   }
@@ -196,15 +196,15 @@ class GlowEffectPainter extends CustomPainter {
       points.add(center + Offset(math.cos(angle), math.sin(angle)) * r);
     }
     final linePaint = Paint()
-      ..color = color.withOpacity(0.35)
+      ..color = color.withValues(alpha: 0.35)
       ..strokeWidth = 1.2
       ..style = PaintingStyle.stroke;
     for (var i = 0; i < points.length - 1; i += 2) {
       canvas.drawLine(points[i], points[i + 1], linePaint);
     }
-    final dotPaint = Paint()..color = Colors.white.withOpacity(0.9);
+    final dotPaint = Paint()..color = Colors.white.withValues(alpha: 0.9);
     final glowDot = Paint()
-      ..color = color.withOpacity(0.5)
+      ..color = color.withValues(alpha: 0.5)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2);
     for (var i = 0; i < points.length; i++) {
       final s = i.isEven ? ringOuterRadius * 0.05 : ringOuterRadius * 0.03;
@@ -217,7 +217,7 @@ class GlowEffectPainter extends CustomPainter {
   /// over a faint haze, like stardust.
   void _paintNebula(Canvas canvas, Offset center) {
     final haze = Paint()
-      ..color = color.withOpacity(0.18)
+      ..color = color.withValues(alpha: 0.18)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10);
     canvas.drawCircle(center, ringOuterRadius * 1.3, haze);
 
@@ -228,7 +228,7 @@ class GlowEffectPainter extends CustomPainter {
       final pos = center + Offset(math.cos(angle), math.sin(angle)) * r;
       final size = ringOuterRadius * (0.015 + rand.nextDouble() * 0.03);
       final opacity = 0.4 + rand.nextDouble() * 0.5;
-      canvas.drawCircle(pos, size, Paint()..color = Colors.white.withOpacity(opacity));
+      canvas.drawCircle(pos, size, Paint()..color = Colors.white.withValues(alpha: opacity));
     }
   }
 

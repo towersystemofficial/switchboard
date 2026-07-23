@@ -378,7 +378,7 @@ class MembersScreenState extends State<MembersScreen> {
             Positioned.fill(
               child: GestureDetector(
                 onTap: () => setState(() => _fabMenuOpen = false),
-                child: Container(color: Colors.black.withOpacity(0.4)),
+                child: Container(color: Colors.black.withValues(alpha: 0.4)),
               ),
             ),
         ],
