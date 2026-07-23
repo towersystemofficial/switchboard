@@ -258,7 +258,7 @@ class _SpotlightPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final scrimPaint = Paint()..color = Colors.black.withOpacity(0.55);
+    final scrimPaint = Paint()..color = Colors.black.withValues(alpha: 0.55);
     if (rect == null) {
       canvas.drawRect(Offset.zero & size, scrimPaint);
       return;
