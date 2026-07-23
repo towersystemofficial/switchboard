@@ -16,12 +16,12 @@ import '../models/group.dart';
 /// Handles all reading/writing to the Obsidian vault.
 ///
 /// Layout created inside the chosen vault folder:
-///   <vault>/FronterLog/members/<n>.md   (YAML frontmatter + notes body)
-///   <vault>/FronterLog/groups/<n>.md    (YAML frontmatter + description)
-///   <vault>/FronterLog/avatars/<id>.<ext>
-///   <vault>/FronterLog/fronting_log.csv    (member_id,start,end,notes)
-///   <vault>/FronterLog/config.md           (app configuration)
-///   <vault>/FronterLog/AboutSystem.md      (system-level profile info)
+///   `<vault>/FronterLog/members/<n>.md   (YAML frontmatter + notes body)`
+///   `<vault>/FronterLog/groups/<n>.md    (YAML frontmatter + description)`
+///   `<vault>/FronterLog/avatars/<id>.<ext>`
+///   `<vault>/FronterLog/fronting_log.csv    (member_id,start,end,notes)`
+///   `<vault>/FronterLog/config.md           (app configuration)`
+///   `<vault>/FronterLog/AboutSystem.md      (system-level profile info)`
 class VaultService {
   static const _prefsVaultKey = 'vault_path';
   static const _prefsPortKey = 'api_port';
