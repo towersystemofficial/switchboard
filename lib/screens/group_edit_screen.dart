@@ -182,7 +182,7 @@ class _GroupEditScreenState extends State<GroupEditScreen> {
       onPopInvoked: (didPop) async {
         if (didPop) return;
         final action = await _confirmUnsavedChanges();
-        if (!mounted) return;
+        if (!context.mounted) return;
         if (action == _ExitAction.save) {
           await _save(provider);
         } else if (action == _ExitAction.discard) {
