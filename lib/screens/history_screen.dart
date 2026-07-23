@@ -676,7 +676,7 @@ class HistoryScreenState extends State<HistoryScreen> {
         const SizedBox(width: 12),
         Expanded(
           child: DropdownButtonFormField<DateRangeOption>(
-            value: _dateRange,
+            initialValue: _dateRange,
             isExpanded: true,
             decoration: const InputDecoration(
               labelText: 'Date range',
