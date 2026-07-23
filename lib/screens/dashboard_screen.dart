@@ -308,7 +308,7 @@ class _SelectableMemberTile extends StatelessWidget {
       child: InkWell(
         onTap: disabled ? null : onTap,
         child: Container(
-          color: selected ? member.color.withOpacity(0.12) : Colors.transparent,
+          color: selected ? member.color.withValues(alpha: 0.12) : Colors.transparent,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
           child: Row(
             children: [
@@ -329,7 +329,7 @@ class _SelectableMemberTile extends StatelessWidget {
                   margin: const EdgeInsets.only(right: 8),
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
-                    color: member.color.withOpacity(0.18),
+                    color: member.color.withValues(alpha: 0.18),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
