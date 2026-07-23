@@ -757,7 +757,7 @@ class HistoryScreenState extends State<HistoryScreen> {
         child: Container(
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
-            color: (member?.color ?? Colors.grey).withOpacity(0.85),
+            color: (member?.color ?? Colors.grey).withValues(alpha: 0.85),
             borderRadius: BorderRadius.circular(6),
           ),
           child: Align(
@@ -960,14 +960,14 @@ class HistoryScreenState extends State<HistoryScreen> {
                     top: topFor(d),
                     left: 0,
                     width: contentWidth,
-                    child: Container(height: 1, color: Colors.grey.withOpacity(0.3)),
+                    child: Container(height: 1, color: Colors.grey.withValues(alpha: 0.3)),
                   ),
                 for (final t in grid.minors)
                   Positioned(
                     top: topFor(t),
                     left: 0,
                     width: contentWidth,
-                    child: Container(height: 1, color: Colors.grey.withOpacity(0.12)),
+                    child: Container(height: 1, color: Colors.grey.withValues(alpha: 0.12)),
                   ),
                 for (final bar in positioned) _buildTimelineBar(context, provider, bar),
                 if (_openInfoEntry != null && _openInfoTapPosition != null)
