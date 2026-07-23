@@ -57,9 +57,9 @@ class MemberAvatar extends StatelessWidget {
   }
 
   double _luminance(Color c) {
-    return 0.2126 * _channelLuminance(c.red) +
-        0.7152 * _channelLuminance(c.green) +
-        0.0722 * _channelLuminance(c.blue);
+    return 0.2126 * _channelLuminance((c.r * 255.0).round().clamp(0, 255).toInt()) +
+        0.7152 * _channelLuminance((c.g * 255.0).round().clamp(0, 255).toInt()) +
+        0.0722 * _channelLuminance((c.b * 255.0).round().clamp(0, 255).toInt());
   }
 
   Color _contrastColor(Color background) {
