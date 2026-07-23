@@ -179,7 +179,7 @@ class _GroupEditScreenState extends State<GroupEditScreen> {
 
     return PopScope(
       canPop: !_dirty,
-      onPopInvoked: (didPop) async {
+      onPopInvokedWithResult: (didPop, result) async {
         if (didPop) return;
         final action = await _confirmUnsavedChanges();
         if (!context.mounted) return;
