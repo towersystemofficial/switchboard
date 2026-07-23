@@ -260,7 +260,7 @@ Widget buildFrameShape({
     child: Transform.translate(
       offset: Offset(spec.offsetX * size, spec.offsetY * size),
       child: Transform(
-        transform: Matrix4.identity()..scale(spec.stretchX, 1.0),
+        transform: Matrix4.identity()..scaleByDouble(spec.stretchX, 1.0, 1.0, 1.0),
         alignment: Alignment.center,
         child: SizedBox(width: size, height: size, child: image),
       ),

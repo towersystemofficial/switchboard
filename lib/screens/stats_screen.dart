@@ -184,7 +184,7 @@ class StatsScreenState extends State<StatsScreen> {
   }) {
     return DropdownButtonFormField<T>(
       key: fieldKey,
-      value: value,
+      initialValue: value,
       isExpanded: true,
       decoration: InputDecoration(
         labelText: label,

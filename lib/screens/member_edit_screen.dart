@@ -542,7 +542,7 @@ class _MemberEditScreenState extends State<MemberEditScreen> {
               const SizedBox(height: 16),
 
               DropdownButtonFormField<String>(
-                value: _pronounSelection,
+                initialValue: _pronounSelection,
                 decoration: const InputDecoration(labelText: 'Pronouns', border: OutlineInputBorder()),
                 items: [
                   for (final option in provider.pronounOptions)
