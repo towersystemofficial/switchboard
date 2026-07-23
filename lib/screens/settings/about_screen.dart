@@ -15,8 +15,9 @@ class AboutScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               'SwitchBoard v0.1\n\n'
-              'A personal, local-first system tracker. All data lives as plain Markdown '
-              'and CSV files inside your own Obsidian vault -- nothing is sent anywhere.',
+              'A personal, local-first system tracker. Your system-tracking data lives '
+              'as plain files in a folder you choose. Data is only transmitted when '
+              'you deliberately use a network feature, such as sending feedback.',
             ),
           ),
         ),
