@@ -24,27 +24,27 @@ class _AestheticsSettingsScreenState extends State<AestheticsSettingsScreen> {
         const Text('App theme', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         Card(
-          child: Column(
-            children: [
-              RadioListTile<String>(
-                title: const Text('System'),
-                value: 'system',
-                groupValue: provider.themeMode,
-                onChanged: (v) => provider.setThemeMode(v!),
-              ),
-              RadioListTile<String>(
-                title: const Text('Light'),
-                value: 'light',
-                groupValue: provider.themeMode,
-                onChanged: (v) => provider.setThemeMode(v!),
-              ),
-              RadioListTile<String>(
-                title: const Text('Dark'),
-                value: 'dark',
-                groupValue: provider.themeMode,
-                onChanged: (v) => provider.setThemeMode(v!),
-              ),
-            ],
+          child: RadioGroup<String>(
+            groupValue: provider.themeMode,
+            onChanged: (value) {
+              if (value != null) provider.setThemeMode(value);
+            },
+            child: Column(
+              children: [
+                RadioListTile<String>(
+                  title: const Text('System'),
+                  value: 'system',
+                ),
+                RadioListTile<String>(
+                  title: const Text('Light'),
+                  value: 'light',
+                ),
+                RadioListTile<String>(
+                  title: const Text('Dark'),
+                  value: 'dark',
+                ),
+              ],
+            ),
           ),
         ),
         const SizedBox(height: 24),

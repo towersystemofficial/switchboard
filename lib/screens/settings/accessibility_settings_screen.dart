@@ -126,38 +126,44 @@ class _AccessibilitySettingsScreenState extends State<AccessibilitySettingsScree
         const Text('Date & Time', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         Card(
-          child: Column(
-            children: [
-              RadioListTile<String>(
-                title: const Text('12-hour'),
-                subtitle: Text(DateFormat('h:mm a').format(now)),
-                value: '12h',
-                groupValue: provider.timeFormat,
-                onChanged: (v) => provider.setTimeFormat(v!),
-              ),
-              RadioListTile<String>(
-                title: const Text('24-hour'),
-                subtitle: Text(DateFormat('HH:mm').format(now)),
-                value: '24h',
-                groupValue: provider.timeFormat,
-                onChanged: (v) => provider.setTimeFormat(v!),
-              ),
-            ],
+          child: RadioGroup<String>(
+            groupValue: provider.timeFormat,
+            onChanged: (value) {
+              if (value != null) provider.setTimeFormat(value);
+            },
+            child: Column(
+              children: [
+                RadioListTile<String>(
+                  title: const Text('12-hour'),
+                  subtitle: Text(DateFormat('h:mm a').format(now)),
+                  value: '12h',
+                ),
+                RadioListTile<String>(
+                  title: const Text('24-hour'),
+                  subtitle: Text(DateFormat('HH:mm').format(now)),
+                  value: '24h',
+                ),
+              ],
+            ),
           ),
         ),
         const SizedBox(height: 8),
         Card(
-          child: Column(
-            children: [
-              for (final pattern in _dateFormatOptions)
-                RadioListTile<String>(
-                  title: Text(pattern),
-                  subtitle: Text(DateFormat(pattern).format(now)),
-                  value: pattern,
-                  groupValue: provider.dateFormat,
-                  onChanged: (v) => provider.setDateFormat(v!),
-                ),
-            ],
+          child: RadioGroup<String>(
+            groupValue: provider.dateFormat,
+            onChanged: (value) {
+              if (value != null) provider.setDateFormat(value);
+            },
+            child: Column(
+              children: [
+                for (final pattern in _dateFormatOptions)
+                  RadioListTile<String>(
+                    title: Text(pattern),
+                    subtitle: Text(DateFormat(pattern).format(now)),
+                    value: pattern,
+                  ),
+              ],
+            ),
           ),
         ),
         const SizedBox(height: 24),
@@ -213,45 +219,47 @@ class _AccessibilitySettingsScreenState extends State<AccessibilitySettingsScree
         if (provider.soundEffectsEnabled) ...[
           const SizedBox(height: 8),
           Card(
-            child: Column(
-              children: [
-                for (final id in SystemProvider.builtInSoundIds)
-                  RadioListTile<String>(
-                    title: Text(_builtInSoundLabels[id] ?? id),
-                    value: id,
-                    groupValue: provider.selectedSoundId,
-                    onChanged: (v) => provider.setSelectedSoundId(v!),
-                    secondary: IconButton(
-                      icon: const Icon(Icons.play_arrow),
-                      onPressed: () => provider.previewSound(id),
+            child: RadioGroup<String>(
+              groupValue: provider.selectedSoundId,
+              onChanged: (value) {
+                if (value != null) provider.setSelectedSoundId(value);
+              },
+              child: Column(
+                children: [
+                  for (final id in SystemProvider.builtInSoundIds)
+                    RadioListTile<String>(
+                      title: Text(_builtInSoundLabels[id] ?? id),
+                      value: id,
+                      secondary: IconButton(
+                        icon: const Icon(Icons.play_arrow),
+                        onPressed: () => provider.previewSound(id),
+                      ),
                     ),
-                  ),
-                for (final filename in provider.customSounds)
-                  RadioListTile<String>(
-                    title: Text(filename),
-                    value: filename,
-                    groupValue: provider.selectedSoundId,
-                    onChanged: (v) => provider.setSelectedSoundId(v!),
-                    secondary: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.play_arrow),
-                          onPressed: () => provider.previewSound(filename),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.delete_outline),
-                          onPressed: () => _deleteSound(provider, filename),
-                        ),
-                      ],
+                  for (final filename in provider.customSounds)
+                    RadioListTile<String>(
+                      title: Text(filename),
+                      value: filename,
+                      secondary: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.play_arrow),
+                            onPressed: () => provider.previewSound(filename),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.delete_outline),
+                            onPressed: () => _deleteSound(provider, filename),
+                          ),
+                        ],
+                      ),
                     ),
+                  ListTile(
+                    leading: const Icon(Icons.upload_file),
+                    title: const Text('Upload custom sound'),
+                    onTap: () => _uploadSound(provider),
                   ),
-                ListTile(
-                  leading: const Icon(Icons.upload_file),
-                  title: const Text('Upload custom sound'),
-                  onTap: () => _uploadSound(provider),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
