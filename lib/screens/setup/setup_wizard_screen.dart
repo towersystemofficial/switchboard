@@ -140,7 +140,7 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
     // Give HomeShell a moment to mount, then offer the optional tutorial.
     Future.delayed(const Duration(milliseconds: 400), () {
       final ctx = homeShellKey.currentContext;
-      if (ctx != null) {
+      if (ctx != null && ctx.mounted) {
         Navigator.of(ctx).push(
           MaterialPageRoute(builder: (_) => const TutorialHubScreen()),
         );

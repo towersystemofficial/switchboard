@@ -59,6 +59,7 @@ class TutorialHubScreen extends StatelessWidget {
 
     shell.goToTab(2);
     await Future.delayed(const Duration(milliseconds: 150));
+    if (!shell.mounted) return;
     final members = shell.membersKey.currentState;
     if (members == null) return;
 
@@ -96,6 +97,7 @@ class TutorialHubScreen extends StatelessWidget {
 
     shell.goToTab(0);
     await Future.delayed(const Duration(milliseconds: 150));
+    if (!shell.mounted) return;
     final dashboard = shell.dashboardKey.currentState;
     if (dashboard == null) return;
 
@@ -133,6 +135,7 @@ class TutorialHubScreen extends StatelessWidget {
 
     shell.goToTab(1);
     await Future.delayed(const Duration(milliseconds: 150));
+    if (!shell.mounted) return;
     final history = shell.historyKey.currentState;
     if (history == null) return;
 
@@ -172,6 +175,7 @@ class TutorialHubScreen extends StatelessWidget {
 
     shell.goToTab(3);
     await Future.delayed(const Duration(milliseconds: 150));
+    if (!shell.mounted) return;
     final stats = shell.statsKey.currentState;
     if (stats == null) return;
 
