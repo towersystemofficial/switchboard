@@ -29,18 +29,18 @@ class _AestheticsSettingsScreenState extends State<AestheticsSettingsScreen> {
             onChanged: (value) {
               if (value != null) provider.setThemeMode(value);
             },
-            child: Column(
+            child: const Column(
               children: [
                 RadioListTile<String>(
-                  title: const Text('System'),
+                  title: Text('System'),
                   value: 'system',
                 ),
                 RadioListTile<String>(
-                  title: const Text('Light'),
+                  title: Text('Light'),
                   value: 'light',
                 ),
                 RadioListTile<String>(
-                  title: const Text('Dark'),
+                  title: Text('Dark'),
                   value: 'dark',
                 ),
               ],
